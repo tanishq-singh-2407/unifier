@@ -1,12 +1,37 @@
 from db import connect
 from mysql.connector import DatabaseError
+from lib.cipher import gen_hash, check_hash
+from db.users.get import get_user
 
-def register_user(first_name: str, last_name: str, email: str) -> str | None:
+def login_user(email: str, password: str) -> bool:
     try:
         conn = connect.connect_to_database()
         cur = conn.cursor()
 
-        cur.execute("INSERT INTO users (first_name, last_name, email) VALUES ('%s', '%s', '%s')" % (first_name, last_name, email))
+        dt = get_user(email)
+
+        if dt == None:
+            return False
+
+        else:
+            return True if check_hash(password, dt[4].encode()) else False
+
+    except DatabaseError as e:
+        print(e.msg)
+        return False
+
+    finally:
+        cur.close()
+        conn.close()
+
+def register_user(first_name: str, last_name: str, email: str, password: str) -> str | None:
+    try:
+        conn = connect.connect_to_database()
+        cur = conn.cursor()
+
+        password_hash = gen_hash(password).decode()
+
+        cur.execute("INSERT INTO users (first_name, last_name, email, password_hash) VALUES ('%s', '%s', '%s', '%s')" % (first_name, last_name, email, password_hash))
         conn.commit()
         
         return email
@@ -19,15 +44,19 @@ def register_user(first_name: str, last_name: str, email: str) -> str | None:
         cur.close()
         conn.close()
 
-def delete_user(email: str) -> bool:
+def delete_user(email: str, password: str) -> bool:
     try:
         conn = connect.connect_to_database()
         cur = conn.cursor()
 
-        cur.execute("DELETE FROM users WHERE email='%s'" % (email,))
-        conn.commit()
+        if login_user(email, password):
+            cur.execute("DELETE FROM users WHERE email='%s'" % (email,))
+            conn.commit()
         
-        return True
+            return True
+
+        else:
+            return False
 
     except DatabaseError as e:
         print(e.msg)

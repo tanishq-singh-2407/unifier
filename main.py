@@ -1,24 +1,38 @@
-from lib import promt, login, register
+from lib.promt import choose
+from lib.user.register import register_user
+from lib.user.login import login_user
+from lib.user.delete import delete_user
 
-type_ask = """
-              UNIFIER
+show = """               UNIFIER
+-----------  Password Manager  -----------
 
------------- SELECT ONE ------------
-1. Register (new user)
-2. Login (old user)
-
-type (default 2): 
 """
 
 def main():
-    type = promt.ask_message(message=type_ask, default=2)
+    type = choose(
+        message="Choose any one",
+        show=show,
+        default=4,
+        enum=[
+            "Register",
+            "Login",
+            "Delete Account",
+            "Quit"
+        ]
+    )
 
-    if int(type) == 1:
-        register.register_user()
+    match type:
+        case 1:
+            register_user()
 
-    else:
-        login.login_user() 
+        case 2:
+            login_user()
 
+        case 3:
+            delete_user()
+
+        case _:
+            quit()
 
 if __name__ == "__main__":
     main()
