@@ -19,11 +19,10 @@ def logged_in(first_name: str, last_name: str, email: str, password: str):
         type = choose(
             message="Choose any one",
             show=show.format(first_name, last_name, email),
-            default=7,
+            default=6,
             enum=[
                 "Get Password",
                 "Add Password",
-                "Update Password",
                 "Delete Password",
                 "Import Passwords from CSV",
                 "Export Passwords from CSV",
@@ -39,15 +38,12 @@ def logged_in(first_name: str, last_name: str, email: str, password: str):
                 add.add_passwords(first_name, last_name, email, password)
 
             case 3:
-                pass
-
-            case 4:
                 delete.delete_password(first_name, last_name, email, password)
 
-            case 5:
+            case 4:
                 import_csv.import_all(first_name, last_name, email, password)
 
-            case 6:
+            case 5:
                 export_csv.export_all(email, password)
 
             case _:

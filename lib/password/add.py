@@ -40,6 +40,7 @@ def add_passwords(first_name: str, last_name: str, email: str, password: str):
         else:
             add.add_one(
                 user_email=email,
+                user_password=password,
                 site_url=data[0],
                 username=data[1],
                 password=data[2]

@@ -1,5 +1,6 @@
 from db import connect
 from mysql.connector import DatabaseError
+from cryptocode import decrypt
 
 def get_all_passwords(email: str, password: str):
     try:
@@ -7,7 +8,7 @@ def get_all_passwords(email: str, password: str):
         cur = conn.cursor()
 
         cur.execute("SELECT * FROM passwords WHERE user_email='%s'" % (email,))
-        data = cur.fetchall()
+        data = [[unit[0], unit[1], unit[2], unit[3], decrypt(unit[4], password)] for unit in cur.fetchall()]
 
         return data
 

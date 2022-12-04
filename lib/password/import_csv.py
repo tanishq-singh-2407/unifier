@@ -53,7 +53,8 @@ def import_all(first_name: str, last_name: str, email: str, password: str):
             if confirmation:
                 for i in dt:
                     add.add_one(
-                        email,
+                        user_email=email,
+                        user_password=password,
                         site_url=i[0],
                         username=i[1],
                         password=i[2],

@@ -1,12 +1,15 @@
 from db import connect
 from mysql.connector import DatabaseError
+from cryptocode import encrypt
 
-def add_one(user_email: str, site_url: str, username: str, password: str):
+def add_one(user_email: str, user_password: str, site_url: str, username: str, password: str):
     try:
         conn = connect.connect_to_database()
         cur = conn.cursor()
 
-        cur.execute("INSERT INTO passwords (user_email, site_url, username, password) VALUES ('%s', '%s', '%s', '%s')" % (user_email, site_url, username, password))
+        password_encode = encrypt(password, user_password)
+
+        cur.execute("INSERT INTO passwords (user_email, site_url, username, password) VALUES ('%s', '%s', '%s', '%s')" % (user_email, site_url, username, password_encode))
         conn.commit()
 
         print("password for site: {0}, has been added".format(site_url))

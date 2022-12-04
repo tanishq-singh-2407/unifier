@@ -1,6 +1,6 @@
 from db import connect
 from mysql.connector import DatabaseError
-from lib.cipher import gen_hash, check_hash
+from lib.cipher import Hashing
 from db.users.get import get_user
 
 def login_user(email: str, password: str) -> bool:
@@ -14,7 +14,7 @@ def login_user(email: str, password: str) -> bool:
             return False
 
         else:
-            return True if check_hash(password, dt[4].encode()) else False
+            return True if Hashing.check_hash(password, dt[4].encode()) else False
 
     except DatabaseError as e:
         print(e.msg)
@@ -29,7 +29,7 @@ def register_user(first_name: str, last_name: str, email: str, password: str) ->
         conn = connect.connect_to_database()
         cur = conn.cursor()
 
-        password_hash = gen_hash(password).decode()
+        password_hash = Hashing.gen_hash(password).decode()
 
         cur.execute("INSERT INTO users (first_name, last_name, email, password_hash) VALUES ('%s', '%s', '%s', '%s')" % (first_name, last_name, email, password_hash))
         conn.commit()
