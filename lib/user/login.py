@@ -1,7 +1,7 @@
 from lib.promt import choose, message, confirm, password, clear_screen
 from db.users.get import get_user
 from db.users.auth import login_user as auth_login_user
-from lib.password import add, get, export_csv, import_csv
+from lib.password import add, get, export_csv, import_csv, delete
 
 
 show = """                 UNIFIER
@@ -19,10 +19,12 @@ def logged_in(first_name: str, last_name: str, email: str, password: str):
         type = choose(
             message="Choose any one",
             show=show.format(first_name, last_name, email),
-            default=5,
+            default=7,
             enum=[
                 "Get Password",
                 "Add Password",
+                "Update Password",
+                "Delete Password",
                 "Import Passwords from CSV",
                 "Export Passwords from CSV",
                 "Logout"
@@ -37,9 +39,15 @@ def logged_in(first_name: str, last_name: str, email: str, password: str):
                 add.add_passwords(first_name, last_name, email, password)
 
             case 3:
-                import_csv.import_all(first_name, last_name, email, password)
+                pass
 
             case 4:
+                delete.delete_password(first_name, last_name, email, password)
+
+            case 5:
+                import_csv.import_all(first_name, last_name, email, password)
+
+            case 6:
                 export_csv.export_all(email, password)
 
             case _:
