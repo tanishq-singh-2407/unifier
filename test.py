@@ -1,8 +1,8 @@
-from db.users.auth import login_user
+from lib.user import login
 
-h = login_user(
-    email="hlo@hlo.com",
-    password="hlohlo"
+login.logged_in(
+    first_name="Tanvii",
+    last_name="Singh",
+    email="tanviisingh640@gmail.com",
+    password="tanvii-2301"
 )
-
-print(h)

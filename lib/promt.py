@@ -11,6 +11,7 @@ def clear_screen():
 
 def password(message: str, show: str = "", minLength: int = 1, maxLength: int = None, clear_at_start: bool = True) -> str:
     ans = ""
+
     if clear_at_start:
         clear_screen()
 
@@ -21,6 +22,7 @@ def password(message: str, show: str = "", minLength: int = 1, maxLength: int = 
         ans = getpass(
             str(message) + ": "
         )
+        clear_screen()
 
         if maxLength and len(ans) > maxLength:
             print("Password is to long (max {0})".format(maxLength))

@@ -7,10 +7,7 @@ def delete_user():
 
     is_correct_information = confirm(
         message="Is above information correct",
-        show=(
-            "Your Details\n\n"
-            + "Email Id   : " + email + "\n"
-        ),
+        show=("Email Id   : " + email + "\n"),
         default=True
     )
 
