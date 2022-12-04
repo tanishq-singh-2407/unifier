@@ -3,7 +3,7 @@ from lib.user.register import register_user
 from lib.user.login import login_user
 from lib.user.delete import delete_user
 
-show = """               UNIFIER
+show = """                  UNIFIER
 -----------  Password Manager  -----------
 
 """
