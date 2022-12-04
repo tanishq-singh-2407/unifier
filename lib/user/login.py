@@ -3,7 +3,6 @@ from db.users.get import get_user
 from db.users.auth import login_user as auth_login_user
 from lib.password import add, get, export_csv, import_csv, delete
 
-
 show = """                 UNIFIER
 -----------  Password Manager  -----------
 

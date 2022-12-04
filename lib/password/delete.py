@@ -1,7 +1,5 @@
 from db.passwords import delete, get
 from lib.promt import choose
-import pandas as pd
-import pyperclip
 
 show = """                 UNIFIER
 -----------  Password Manager  -----------
