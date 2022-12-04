@@ -44,5 +44,4 @@ def list_all_passwords(first_name: str, last_name: str, email: str, password: st
             print(df)
             print("\nPassword has been copied")
 
-        input("Press any button to exit")
-        return
+        return input("Press any button to exit")

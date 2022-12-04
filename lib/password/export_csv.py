@@ -10,3 +10,6 @@ def export_all(email: str, password: str):
 
     file_writer.writerow(["id", "user_email", "site_url", "username", "password"])
     file_writer.writerows(passwords)
+
+    print("File exported (name: {0})".format(file_name))
+    return input("\nPress any to return")

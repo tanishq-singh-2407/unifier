@@ -9,6 +9,8 @@ def add_one(user_email: str, site_url: str, username: str, password: str):
         cur.execute("INSERT INTO passwords (user_email, site_url, username, password) VALUES ('%s', '%s', '%s', '%s')" % (user_email, site_url, username, password))
         conn.commit()
 
+        print("password for site: {0}, has been added".format(site_url))
+
         return True
 
     except DatabaseError as e:
