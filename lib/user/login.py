@@ -11,7 +11,7 @@ Welcome  : {0} {1}
 Email Id : {2}
 """
 
-def logged_in(first_name: str, last_name: str, email: str, password: str):
+def logged_in(first_name, last_name, email, password):
     clear_screen()
 
     while True:
@@ -29,24 +29,23 @@ def logged_in(first_name: str, last_name: str, email: str, password: str):
             ]
         )
 
-        match type:
-            case 1:
-                get.list_all_passwords(first_name, last_name, email, password)
+        if type == 1:
+            get.list_all_passwords(first_name, last_name, email, password)
 
-            case 2:
-                add.add_passwords(first_name, last_name, email, password)
+        elif type == 2:
+            add.add_passwords(first_name, last_name, email, password)
 
-            case 3:
-                delete.delete_password(first_name, last_name, email, password)
+        elif type == 3:
+            delete.delete_password(first_name, last_name, email, password)
 
-            case 4:
-                import_csv.import_all(first_name, last_name, email, password)
+        elif type == 4:
+            import_csv.import_all(first_name, last_name, email, password)
 
-            case 5:
-                export_csv.export_all(email, password)
+        elif type == 5:
+            export_csv.export_all(email, password)
 
-            case _:
-                quit()
+        else:
+            quit()
 
 def login_user():
     email = message(message="Enter email id", minLength=3, maxLength=60, clear_at_start=False)

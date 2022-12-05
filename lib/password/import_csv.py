@@ -12,7 +12,7 @@ Welcome  : {0} {1}
 Email Id : {2}
 """
 
-def import_all(first_name: str, last_name: str, email: str, password: str):
+def import_all(first_name, last_name, email, password):
     files = [i for i in listdir() if i.endswith(".csv")]
 
     type = choose(

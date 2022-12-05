@@ -2,7 +2,7 @@ from lib.promt import message, confirm, password
 from db.users.get import get_user
 from db.users.auth import register_user as auth_register_user
 
-def register_user(first_name: str="", last_name: str="", email: str=""):
+def register_user(first_name="", last_name="", email=""):
     if first_name == "":
         first_name = message(message="Enter first name", minLength=3, maxLength=30)
     

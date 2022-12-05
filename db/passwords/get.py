@@ -2,7 +2,7 @@ from db import connect
 from mysql.connector import DatabaseError
 from cryptocode import decrypt
 
-def get_all_passwords(email: str, password: str):
+def get_all_passwords(email, password):
     try:
         conn = connect.connect_to_database()
         cur = conn.cursor()

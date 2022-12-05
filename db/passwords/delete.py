@@ -1,7 +1,7 @@
 from db import connect
 from mysql.connector import DatabaseError
 
-def delete_one(email: str, id: str):
+def delete_one(email, id):
     try:
         conn = connect.connect_to_database()
         cur = conn.cursor()
@@ -18,7 +18,7 @@ def delete_one(email: str, id: str):
         cur.close()
         conn.close()
 
-def delete_all(email: str):
+def delete_all(email):
     try:
         conn = connect.connect_to_database()
         cur = conn.cursor()

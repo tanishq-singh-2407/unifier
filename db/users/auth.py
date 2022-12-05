@@ -3,7 +3,7 @@ from mysql.connector import DatabaseError
 from lib.cipher import Hashing
 from db.users.get import get_user
 
-def login_user(email: str, password: str) -> bool:
+def login_user(email, password):
     try:
         conn = connect.connect_to_database()
         cur = conn.cursor()
@@ -24,7 +24,7 @@ def login_user(email: str, password: str) -> bool:
         cur.close()
         conn.close()
 
-def register_user(first_name: str, last_name: str, email: str, password: str) -> str | None:
+def register_user(first_name, last_name, email, password):
     try:
         conn = connect.connect_to_database()
         cur = conn.cursor()
@@ -44,7 +44,7 @@ def register_user(first_name: str, last_name: str, email: str, password: str) ->
         cur.close()
         conn.close()
 
-def delete_user(email: str, password: str) -> bool:
+def delete_user(email, password):
     try:
         conn = connect.connect_to_database()
         cur = conn.cursor()

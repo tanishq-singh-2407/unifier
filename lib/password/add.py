@@ -9,7 +9,7 @@ Welcome  : {0} {1}
 Email Id : {2}
 """
 
-def get_data(first_name: str, last_name: str, email: str):
+def get_data(first_name, last_name, email):
     site_url = message(message="Enter site url", show=show.format(first_name, last_name, email), minLength=3 ,maxLength=255)
     username = message(message="Enter username", show=show.format(first_name, last_name, email), minLength=3 ,maxLength=255)
     password = message(message="Enter password", show=show.format(first_name, last_name, email), minLength=3 ,maxLength=255)
@@ -27,7 +27,7 @@ def get_data(first_name: str, last_name: str, email: str):
 
     return [site_url, username, password] if is_correct_information else False
 
-def add_passwords(first_name: str, last_name: str, email: str, password: str):
+def add_passwords(first_name, last_name, email, password):
     data = []
 
     while True:

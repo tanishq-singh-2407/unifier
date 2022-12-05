@@ -21,18 +21,17 @@ def main():
         ]
     )
 
-    match type:
-        case 1:
-            register_user()
+    if type == 1: 
+        register_user()
 
-        case 2:
-            login_user()
+    elif type == 2:
+        login_user()
 
-        case 3:
-            delete_user()
+    elif type == 3:
+        delete_user()
 
-        case _:
-            quit()
+    else:
+        quit()
 
 if __name__ == "__main__":
     main()

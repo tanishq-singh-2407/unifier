@@ -17,7 +17,7 @@ def get_all_users():
         cur.close()
         conn.close()
 
-def get_user(email: str):
+def get_user(email):
     try:
         conn = connect.connect_to_database()
         cur = conn.cursor()

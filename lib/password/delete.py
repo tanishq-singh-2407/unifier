@@ -9,7 +9,7 @@ Welcome  : {0} {1}
 Email Id : {2}
 """
 
-def delete_password(first_name: str, last_name: str, email: str, password: str):
+def delete_password(first_name, last_name, email, password):
     passwords = get.get_all_passwords(email, password)
 
     type = choose(
