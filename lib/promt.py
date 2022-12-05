@@ -9,7 +9,7 @@ def clear_screen():
     else:
         system('cls')
 
-def password(message: str, show: str = "", minLength: int = 1, maxLength: int = None, clear_at_start: bool = True) -> str:
+def password(message, show = "", minLength = 1, maxLength = None, clear_at_start = True) -> str:
     ans = ""
 
     if clear_at_start:
@@ -34,7 +34,7 @@ def password(message: str, show: str = "", minLength: int = 1, maxLength: int = 
             return str(ans)
         
 
-def message(message: str, show: str = "", minLength: int = 1, maxLength: int = None, default=None, clear_at_start: bool = True) -> str:
+def message(message, show = "", minLength = 1, maxLength = None, default=None, clear_at_start = True) -> str:
     ans = ""
     default_txt = ("\n   [default: " + str(default) + "]") if default != None else ""
 
@@ -65,7 +65,7 @@ def message(message: str, show: str = "", minLength: int = 1, maxLength: int = N
         else:
             return str(ans)
 
-def choose(message: str, enum: list[str], show: str = "", default=None, clear_at_start: bool = True):
+def choose(message, enum, show = "", default=None, clear_at_start = True):
     ans = ""
     options = "".join([("   " + str(i + 1) + ") " + str(enum[i]) + "\n") for i in range(len(enum))])
     default_txt = (", [default: " + str(default) + "]") if default != None else ""
@@ -95,7 +95,7 @@ def choose(message: str, enum: list[str], show: str = "", default=None, clear_at
                 return int(default)
 
 
-def confirm(message: str, show: str = "", default: bool=None, clear_at_start: bool = True) -> str:
+def confirm(message, show = "", default=None, clear_at_start = True) -> str:
     ans = default
     options = ", " + ("[y/n]" if default == None else "[Y/n]" if default else "[y/N]")
 

@@ -1,7 +1,7 @@
 from db.passwords import get
 import csv
 
-def export_all(email: str, password: str):
+def export_all(email, password):
     file_name = "passwords.csv"
     passwords = get.get_all_passwords(email, password)
 

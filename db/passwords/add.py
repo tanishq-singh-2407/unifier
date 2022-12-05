@@ -2,7 +2,7 @@ from db import connect
 from mysql.connector import DatabaseError
 from cryptocode import encrypt
 
-def add_one(user_email: str, user_password: str, site_url: str, username: str, password: str):
+def add_one(user_email, user_password, site_url, username, password):
     try:
         conn = connect.connect_to_database()
         cur = conn.cursor()
